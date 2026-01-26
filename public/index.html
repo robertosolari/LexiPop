@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LexiPop - Esplora le Parole</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Search Section -->
+    <div class="search-section" id="searchSection">
+      <h1 class="title">LexiPop</h1>
+      <p class="subtitle">Esplora sinonimi e contrari</p>
+      <div class="search-box">
+        <input
+          type="text"
+          id="wordInput"
+          placeholder="Inserisci una parola..."
+          autocomplete="off"
+        >
+        <button id="explodeBtn" class="explode-btn">
+          <span class="btn-text">Esplodi</span>
+          <span class="btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <p class="hint">Premi Enter o clicca Esplodi</p>
+    </div>
+
+    <!-- Graph Section -->
+    <div class="graph-section" id="graphSection">
+      <button class="back-btn" id="backBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Nuova ricerca
+      </button>
+      <div class="legend">
+        <span class="legend-item sinonimo">Sinonimi</span>
+        <span class="legend-item contrario">Contrari</span>
+      </div>
+      <svg id="graphSvg"></svg>
+      <div class="word-tooltip" id="tooltip"></div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Cercando...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" id="errorMessage">
+      <p id="errorText"></p>
+      <button id="retryBtn">Riprova</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
