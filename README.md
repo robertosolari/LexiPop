@@ -27,7 +27,7 @@ Web app interattiva per esplorare sinonimi e contrari della lingua italiana attr
 
 ```bash
 # Clona il repository
-git clone https://github.com/tuousername/lexipop.git
+git clone https://github.com/robertosolari/lexipop.git
 cd lexipop
 
 # Installa le dipendenze
