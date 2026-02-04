@@ -5,6 +5,8 @@ Web app interattiva per esplorare sinonimi e contrari della lingua italiana attr
 ![Node.js](https://img.shields.io/badge/Node.js-18+-green)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
+![Screenshot](screenshot.png)
+
 ## Funzionalità
 
 - Inserisci una parola italiana e visualizza sinonimi e contrari in un grafo esplosivo
