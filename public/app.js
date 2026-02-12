@@ -114,12 +114,20 @@ function showGraph(data) {
   const nodes = [];
   const links = [];
 
+  // Calculate radius based on word length
+  function calcRadius(word, isCenter) {
+    const charWidth = isCenter ? 8.5 : 7;
+    const padding = isCenter ? 20 : 16;
+    const minRadius = isCenter ? 35 : 25;
+    return Math.max(minRadius, (word.length * charWidth) / 2 + padding);
+  }
+
   // Center node (searched word)
   const centerNode = {
     id: 'center',
     word: data.word,
     type: 'center',
-    radius: 45,
+    radius: calcRadius(data.word, true),
     x: width / 2,
     y: height / 2
   };
@@ -131,7 +139,7 @@ function showGraph(data) {
       id: `sin-${i}`,
       word: word,
       type: 'sinonimo',
-      radius: 30 + Math.random() * 10
+      radius: calcRadius(word, false)
     };
     nodes.push(node);
     links.push({
@@ -147,7 +155,7 @@ function showGraph(data) {
       id: `con-${i}`,
       word: word,
       type: 'contrario',
-      radius: 30 + Math.random() * 10
+      radius: calcRadius(word, false)
     };
     nodes.push(node);
     links.push({
@@ -240,7 +248,7 @@ function showGraph(data) {
     .attr('fill', 'white')
     .attr('font-size', d => d.type === 'center' ? '14px' : '11px')
     .attr('font-weight', d => d.type === 'center' ? '600' : '500')
-    .text(d => truncateWord(d.word, d.radius));
+    .text(d => d.word);
 
   // Force simulation
   simulation = d3.forceSimulation(nodes)
@@ -363,14 +371,6 @@ function createExplosionEffect() {
       easing: 'cubic-bezier(0, 0.5, 0.5, 1)'
     }).onfinish = () => particle.remove();
   }
-}
-
-function truncateWord(word, radius) {
-  const maxLength = Math.floor(radius / 5);
-  if (word.length > maxLength) {
-    return word.substring(0, maxLength - 1) + '...';
-  }
-  return word;
 }
 
 // Handle window resize
